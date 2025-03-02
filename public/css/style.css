@@ -1,58 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
-body, * {
-    font-family: 'Roboto', sans-serif;
+body,
+* {
+    font-family: "Inter", sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f4f4;
 }
 
 h1 {
-    margin: 1rem;
+    text-align: center;
+    font-size: 1.75rem;
+    margin: 0 auto;
+    color: #222;
 }
 
-.cards {
+.container {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-.card {
-    flex-basis: 31%;
-    margin: 1rem 0.4rem;
-    padding: 1rem 0.4rem 2.5rem 0.4rem;
-    border: solid 1px lightgrey;
+    gap: 40px;
+    padding: 40px 30px 30px 30px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto 80px auto;
     border-radius: 15px;
-    box-shadow: 3px 2px 6px lightgrey;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
 }
 
-.card__email {
+.container .add-btn,
+.container button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
 }
 
-.form-wrappers {
-    font-size: 18px;
-    max-width: 768px;
-    margin: 2rem auto;
-    padding: 2rem;
-    border: solid 1px lightgrey;
-    border-radius: 15px;
-    box-shadow: 3px 2px 6px lightgrey;
+.container .add-btn:hover,
+.container button:hover {
+    background-color: #fff;
+    color: #000;
 }
 
-label, input {
-    margin-top: 5px;
-    display: block;
-    font-size: inherit;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #000;
 }
 
-input[type="text"] {
-    padding: .25rem;
+table th,
+table td {
+    border: 2px solid #000;
+    padding: 10px;
+    text-align: center;
 }
 
-input[type="submit"] {
-    background-color: lightgrey;
-    border: none;
-    padding: .375rem 1rem;
-    margin-top: 10px;
+table td:last-child {
+    text-align: left;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.container form input,
+.container form textarea {
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.container form textarea {
+    resize: none;
+}
+
+.container form input:focus,
+.container form textarea:focus {
+    border: 2px solid #00f;
+}
+
+.container form label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
 }
