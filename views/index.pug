@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title Concerts
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    div.container
+      h1.page-title NBD Philharmonic Concerts
+
+      a(href="/update-cobj").add-btn Add New Concert
+
+      if concertsData && concertsData.length
+        table
+          thead
+            tr
+              th Name
+              th Composer
+              th Date
+          tbody
+            each concert in concertsData
+              tr
+                td= concert.properties.name
+                td= concert.properties.composer
+                td= concert.properties.concert_date_time
