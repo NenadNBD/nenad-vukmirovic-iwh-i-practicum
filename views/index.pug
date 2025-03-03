@@ -11,9 +11,10 @@ html
           img(src="/images/nbd-philharmonic.svg" alt="NBD Philharmonic")
     main.main-content
       div.container
-        h1.page-title NBD Philharmonic Concerts
-
-        a(href="/update-cobj").add-btn Add New Concert
+        div.page-headline
+          h1.page-title NBD Philharmonic Concerts
+        div.add-new-button-nody
+          a(href="/update-cobj").add-btn Add New Concert
 
         if concertsData && concertsData.length
           div.concerts-body

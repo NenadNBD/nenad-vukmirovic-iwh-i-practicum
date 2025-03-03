@@ -47,20 +47,40 @@ main.main-content{
     margin: 0;
 }
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    padding: 40px 30px 30px 30px;
+    position: relative;
+    display: block;
     width: 100%;
-    max-width: 1000px;
-    margin: 40px auto 80px auto;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
+    max-width: 1060px;
+    padding: 70px 30px 70px 30px;
+    margin: 0 auto;
 }
-
+.page-headline{
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0 0 36px 0;
+}
+.page-headline h1{
+    font-size: 36px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    color: #151E21;
+    padding: 0;
+    margin: 0;
+}
+.add-new-button-nody{
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0 0 36px 0;
+}
 .container .add-btn,
 .container button {
     background-color: #000;
@@ -81,57 +101,202 @@ main.main-content{
     background-color: #fff;
     color: #000;
 }
-
-table {
+.form-body{
+    position: relative;
+    display: block;
     width: 100%;
-    border-collapse: collapse;
-    border: 2px solid #000;
+    padding: 0;
+    margin: 0 auto;
 }
-
-table th,
-table td {
-    border: 2px solid #000;
-    padding: 10px;
-    text-align: center;
+.form-body form#addNewConcert {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
-
-table td:last-child {
+#addNewConcert fieldset.one-column-fieldset{
+    position: relative;
+    display: grid;
+    width: 518px;
+    grid-template-columns: repeat(1, 1Fr);
+    grid-column-gap: 0px;
+    border: none;
+    padding: 0;
+    margin: 0 auto 24px 0;
+}
+#addNewConcert fieldset.program-column-fieldset{
+    position: relative;
+    display: grid;
+    align-items: end;
+    justify-items: start;
+    grid-template-columns: 20px auto auto 120px;
+    grid-column-gap: 16px;
+    border: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+}
+#addNewConcert .form-input{
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+#addNewConcert label{
+    position: relative;
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.4;
+    color: #151E21;
+    margin: 0 0 8px 0;
+}
+#addNewConcert input,
+#addNewConcert select{
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 54px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.4;
+    color: #151E21;
+    background-color: #ffffff;
+    border: 1px solid #E8E8E8;
+    border-radius: 10px;
+    padding: 0 8px;
+    margin: 0;
+}
+#addNewConcert input:focus-visible,
+#addNewConcert select:focus-visible{
+    outline: none;
+}
+#addNewConcert input:-webkit-autofill{
+    background-color: #ffffff !important;
+    color: #151E21;
+    border: 1px solid #E8E8E8;
+    box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  }
+  #addNewConcert input:-webkit-autofill:focus,
+  #addNewConcert select:-webkit-autofill:focus{
+    background-color: #ffffff !important;
+    border: 1px solid #E8E8E8;
+    box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  }
+  #addNewConcert .error-message{
+    display: none;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: 0px;
+    line-height: 1.4;
+    text-transform: none;
+    text-decoration: none;
+    color: #C41E3A;
+    margin: 8px 0 0 0;
+  }
+  #addNewConcert .form-concert-program{
+    position: relative;
+    display: block;
+    width: 100%;
     text-align: left;
-}
-
-.container form {
+    padding: 0;
+    margin: 0 0 12px 0;
+  }
+  #addNewConcert .form-concert-program p{
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    color: #151E21;
+    padding: 0;
+    margin: 0;
+  }
+  #addNewConcert .form-concert-program-divider{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #E8E8E8;
+    padding: 0;
+    margin: 0 0 24px 0;
+  }
+  #addNewConcert .count-program-rows{
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    max-width: 500px;
-}
-
-.container form input,
-.container form textarea {
-    padding: 10px;
-    border: 2px solid #000;
+    width: 20px;
+    height: 54px;
+    padding: 0;
+    margin: 0;
+  }
+  #addNewConcert .count-program-rows p{
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    color: #151E21;
+    padding: 0;
+    margin: 0;
+  }
+  #addNewConcert button.remove-program-button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 54px;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: #151E21;
+    background-color: #FF7B59;
+    border: 1px solid #FF7B59;
     border-radius: 5px;
-    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+  }
+  #addNewConcert .add-program-button-body{
+    position: relative;
+    display: flex;
     width: 100%;
-    margin-bottom: 10px;
-    transition: 0.3s;
-}
-
-.container form textarea {
-    resize: none;
-}
-
-.container form input:focus,
-.container form textarea:focus {
-    border: 2px solid #00f;
-}
-
-.container form label {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #000;
-}
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+    margin: 0 0 16px 0;
+  }
+  #addNewConcert button.add-program{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 210px;
+    height: 54px;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: #151E21;
+    background-color: #ABCF37;
+    border: 1px solid #ABCF37;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+  }
 .concerts-body{
     position: relative;
     display: flex;

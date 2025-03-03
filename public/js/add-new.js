@@ -6,34 +6,82 @@ document.addEventListener("DOMContentLoaded", function () {
         altInput: true,
         altFormat: "F j, Y h:iK"
     });
-    const composerContainer = document.getElementById("composer-container");
-    const addComposerButton = document.getElementById("add-composer");
+    const programContainer = document.getElementById("programContainer");
+    const addProgramButton = document.getElementById("addProgram");
 
-    addComposerButton.addEventListener("click", function () {
-        // Create Composer label and input
-        const newComposerLabel = document.createElement("label");
-        newComposerLabel.textContent = "Composer:";
-        newComposerLabel.setAttribute("for", "composer");
+    addProgramButton.addEventListener("click", function () {
+        const programRows = programContainer.querySelectorAll(".program-column-fieldset").length + 1;
 
-        const newComposerInput = document.createElement("input");
-        newComposerInput.type = "text";
-        newComposerInput.name = "composer[]"; // Keep array format
-        newComposerInput.required = true;
+        // Create fieldset wrapper
+        const fieldset = document.createElement("fieldset");
+        fieldset.classList.add("program-column-fieldset");
 
-        // Create Composition label and input
-        const newCompositionLabel = document.createElement("label");
-        newCompositionLabel.textContent = "Composition:";
-        newCompositionLabel.setAttribute("for", "composition");
+        // Create count div
+        const countDiv = document.createElement("div");
+        countDiv.classList.add("count-program-rows");
+        const countP = document.createElement("p");
+        countP.textContent = programRows; // Set the number
+        countDiv.appendChild(countP);
 
-        const newCompositionInput = document.createElement("input");
-        newCompositionInput.type = "text";
-        newCompositionInput.name = "composition[]"; // Keep array format
-        newCompositionInput.required = true;
+        // Create Composer input
+        const composerDiv = document.createElement("div");
+        composerDiv.classList.add("form-input");
+        const composerLabel = document.createElement("label");
+        composerLabel.setAttribute("for", `composer-${programRows}`);
+        composerLabel.textContent = "Composer:";
+        const composerInput = document.createElement("input");
+        composerInput.type = "text";
+        composerInput.name = "composer[]";
+        composerInput.id = `composer-${programRows}`;
+        composerInput.required = true;
+        composerDiv.appendChild(composerLabel);
+        composerDiv.appendChild(composerInput);
 
-        // Append new elements before the button
-        composerContainer.appendChild(newComposerLabel);
-        composerContainer.appendChild(newComposerInput);
-        composerContainer.appendChild(newCompositionLabel);
-        composerContainer.appendChild(newCompositionInput);
+         // Create Composition input
+         const compositionDiv = document.createElement("div");
+         compositionDiv.classList.add("form-input");
+         const compositionLabel = document.createElement("label");
+         compositionLabel.setAttribute("for", `composition-${programRows}`);
+         compositionLabel.textContent = "Composition:";
+         const compositionInput = document.createElement("input");
+         compositionInput.type = "text";
+         compositionInput.name = "composition[]";
+         compositionInput.id = `composition-${programRows}`;
+         compositionInput.required = true;
+         compositionDiv.appendChild(compositionLabel);
+         compositionDiv.appendChild(compositionInput);
+
+        // Create Remove button (only for second row and beyond)
+        const removeDiv = document.createElement("div");
+        removeDiv.classList.add("remove-program-row");
+        if (programRows > 1) {
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.type = "button"; // Prevent form submission
+            removeButton.classList.add("remove-program-button"); // Add CSS class
+        
+            removeButton.addEventListener("click", function () {
+                fieldset.remove();
+                updateOrdinalNumbers(); // Update numbering after removal
+            });
+        
+            removeDiv.appendChild(removeButton);
+        }
+        // Append all elements to fieldset
+        fieldset.appendChild(countDiv);
+        fieldset.appendChild(composerDiv);
+        fieldset.appendChild(compositionDiv);
+        fieldset.appendChild(removeDiv);
+
+        // Append fieldset to container
+        programContainer.appendChild(fieldset);
     });
+
+    function updateOrdinalNumbers() {
+        const rows = programContainer.querySelectorAll(".program-column-fieldset");
+        rows.forEach((row, index) => {
+            row.querySelector(".count-program-rows p").textContent = (index + 1) + ".";
+        });
+    }
+
 });
