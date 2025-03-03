@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
 body,
 * {
-    font-family: "Inter", sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,14 +9,6 @@ body,
 body {
     background-color: #f4f4f4;
 }
-
-h1 {
-    text-align: center;
-    font-size: 1.75rem;
-    margin: 0 auto;
-    color: #222;
-}
-
 .container {
     display: flex;
     flex-direction: column;
@@ -104,4 +94,83 @@ table td:last-child {
     font-size: 1rem;
     font-weight: 700;
     color: #000;
+}
+.concerts-body{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    gap: 36px;
+    padding: 0;
+    margin: 0;
+}
+.concert{
+    position: relative;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 200px auto;
+    grid-column-gap: 36px;
+    align-items: stretch;
+    justify-items: start;
+    border: 1px solid #151E21;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+}
+.concert-left{
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    background-color: #151E21;
+    padding: 0;
+    margin: 0;
+}
+.concert-left h3{
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.4;
+    text-transform: none;
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+}
+.concert-left h3 span.date-time-divider{
+    display: block;
+    width: 70%;
+    height: 2px;
+    background-color: #34D5B3;
+    margin: 4px auto;
+}
+.concert-left h3 span.time{
+    font-weight: bold;
+}
+.concert-right{
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 16px 16px 0;
+    margin: 0;
+}
+.concert-right h1{
+    font-size: 27px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    color: #151E21;
+    padding: 0;
+    margin: 0;
 }

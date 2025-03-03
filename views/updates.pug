@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title= pageTitle
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css")
+    script(src="https://cdn.jsdelivr.net/npm/flatpickr" defer)
+    script(src="/js/add-new.js" defer)
+  body
+    div.container
+      h1.page-title Add New Concert
+      form(action="/update-cobj" method="POST")
+        label(for="name") Concert name:
+        input(type="text" name="name" id="name" required)
+        label(for="dateTime") Date/Time:
+        input(type="text" name="dateTime" id="dateTime" required)
+        div#composer-container
+          label(for="composer") Composer:
+          input(type="text" name="composer[]" id="composer" required)
+          label(for="composition") Composition:
+          input(type="text" name="composition[]" id="composition" required)
+        div#composer-button-container
+          button(type="button" id="add-composer") Add Composer
+        button(type="submit") Submit
+      a(href="/").add-btn Return to the homepage

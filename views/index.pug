@@ -11,15 +11,14 @@ html
       a(href="/update-cobj").add-btn Add New Concert
 
       if concertsData && concertsData.length
-        table
-          thead
-            tr
-              th Name
-              th Composer
-              th Date
-          tbody
-            each concert in concertsData
-              tr
-                td= concert.properties.name
-                td= concert.properties.composer
-                td= concert.properties.concert_date_time
+        div.concerts-body
+          each concert in concertsData
+            div.concert
+              div.concert-left
+                h3
+                  = concert.properties.concert_date
+                  span.date-time-divider
+                  span.time= concert.properties.concert_time
+              div.concert-right
+                h1= concert.properties.name
+                div.concert-program
