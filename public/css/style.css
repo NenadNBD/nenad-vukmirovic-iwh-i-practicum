@@ -73,33 +73,44 @@ main.main-content{
     padding: 0;
     margin: 0;
 }
-.add-new-button-nody{
+.add-new-button-body{
     position: relative;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     width: 100%;
     text-align: center;
     padding: 0;
     margin: 0 0 36px 0;
 }
-.container .add-btn,
-.container button {
-    background-color: #000;
-    color: #fff;
-    padding: 10px 20px;
-    border: 2px solid #000;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
+.add-new-button-body a.add-btn {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 45px;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
     text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: 0.3s;
+    color: #151E21;
+    background-color: #34D5B3;
+    border: 1px solid #34D5B3;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+    transition: all 0.3s ease-in-out;
 }
-
-.container .add-btn:hover,
-.container button:hover {
-    background-color: #fff;
-    color: #000;
+.add-new-button-body a.add-btn:hover {
+    color: #ffffff;
+    background-color: #151E21;
+    border: 1px solid #151E21;
 }
 .form-body{
     position: relative;
@@ -263,8 +274,15 @@ main.main-content{
     background-color: #FF7B59;
     border: 1px solid #FF7B59;
     border-radius: 5px;
+    cursor: pointer;
     padding: 0;
     margin: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  #addNewConcert button.remove-program-button:hover{
+    color: #ffffff;
+    background-color: #151E21;
+    border: 1px solid #151E21;
   }
   #addNewConcert .add-program-button-body{
     position: relative;
@@ -294,8 +312,84 @@ main.main-content{
     background-color: #ABCF37;
     border: 1px solid #ABCF37;
     border-radius: 5px;
+    cursor: pointer;
     padding: 0;
     margin: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  #addNewConcert button.add-program:hover{
+    color: #151E21;
+    background-color: #ffffff;
+    border: 1px solid #151E21;
+  }
+  #addNewConcert .form-final-buttons-body{
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    grid-column-gap: 48px;
+    padding: 0;
+    margin: 48px 0 0 0;
+  }
+  #addNewConcert button.submit-form-button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 270px;
+    height: 54px;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #151E21;
+    background-color: #34D5B3;
+    border: 1px solid #34D5B3;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  #addNewConcert button.submit-form-button:hover{
+    color: #ffffff;
+    background-color: #151E21;
+    border: 1px solid #151E21;
+  }
+  #addNewConcert a.return-to-home{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 270px;
+    height: 54px;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #151E21;
+    background-color: #A4EDDE;
+    border: 1px solid #34D5B3;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  #addNewConcert a.return-to-home:hover{
+    color: #151E21;
+    background-color: #ffffff;
+    border: 1px solid #151E21;
   }
 .concerts-body{
     position: relative;

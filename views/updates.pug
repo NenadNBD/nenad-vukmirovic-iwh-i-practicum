@@ -50,8 +50,9 @@ html
                 select(name="conductor" id="conductor" required)
                   option(value="") Select a conductor
                 input(type="hidden" name="conductorName" id="conductorName")
-            button(type="submit") Submit
-          a(href="/").add-btn Return to the homepage
+            div.form-final-buttons-body
+              a(href="/").return-to-home Return to the homepage
+              button(type="submit" class="submit-form-button") Submit
   div.check-date-modal#checkDatemodal
     div.check-date-modal-content
       p Oops! A concert is already planned for the selected date. Try choosing a different day.
