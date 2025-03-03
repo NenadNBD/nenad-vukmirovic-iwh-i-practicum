@@ -22,3 +22,14 @@ html
               div.concert-right
                 h1= concert.properties.name
                 div.concert-program
+                  - var composers = concert.properties.composer.split("; ")
+                  - var compositions = concert.properties.composition.split("; ")
+                  each composer, index in composers
+                    p 
+                      | #{composer}: 
+                      span= " " + (compositions[index] || "Unknown Composition")
+                div.program-divider
+                  img(src="/images/Mint-Divider.svg" alt="Logo")
+                div.concert-conductor
+                  p Conductor:
+                    span Nenad Vukmirovic
