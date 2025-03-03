@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 require("dotenv").config();
+const getConductors  = require('./utils/getConductors');
 const app = express();
 
 app.set('view engine', 'pug');
@@ -100,6 +101,9 @@ app.post("/update-cobj", async (req, res) => {
         console.error(error);
     }
 });
+
+// TODO: ROUTE 4 - Get Conductors from Contacts Object
+app.use("/conductors", getConductors);
 
 /** 
 * * This is sample code to give you a reference for how you should structure your calls. 

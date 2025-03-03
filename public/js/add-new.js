@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     flatpickr("#dateTime", {
         enableTime: true,
         dateFormat: "Y-m-d H:i",
@@ -82,6 +82,22 @@ document.addEventListener("DOMContentLoaded", function () {
         rows.forEach((row, index) => {
             row.querySelector(".count-program-rows p").textContent = (index + 1) + ".";
         });
+    }
+
+    const conductorSelect = document.getElementById("conductor");
+
+    try {
+        const conductorsResponse = await fetch("/conductors"); // Fetch data from API
+        const setConductors = await conductorsResponse.json(); // Parse JSON
+
+        setConductors.forEach(conductor => {
+            const option = document.createElement("option");
+            option.value = conductor.properties.hs_object_id; // Set value to object ID
+            option.textContent = `${conductor.properties.firstname} ${conductor.properties.lastname}`; // Show name
+            conductorSelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Error fetching conductors:", error);
     }
 
 });
