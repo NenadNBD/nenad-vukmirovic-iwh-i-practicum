@@ -17,16 +17,17 @@ html
         div.page-headline
           h1.page-title Add New Concert
         div.form-body
-          form#addNewConcert(action="/update-cobj" method="POST")
+          form#addNewConcert(action="/update-cobj" method="POST" novalidate)
             fieldset.one-column-fieldset
               div.form-input
-                label(for="name") Concert name:
+                label(for="name") Concert Name:
                 input(type="text" name="name" id="name" required)
-                span#error-message.email-error
+                span(class="error-message")
             fieldset.one-column-fieldset
               div.form-input
-                label(for="dateTime") Date/Time:
+                label(for="dateTime") Date and Time:
                 input(type="text" name="dateTime" id="dateTime" required)
+                span(class="error-message")
             div.form-concert-program
               p Program:
             div.form-concert-program-divider
@@ -37,9 +38,11 @@ html
                 div.form-input
                   label(for="composer") Composer:
                   input(type="text" name="composer[]" id="composer" required)
+                  span(class="error-message")
                 div.form-input
                   label(for="composition") Composition:
                   input(type="text" name="composition[]" id="composition" required)
+                  span(class="error-message")
                 div.remove-program-row 
             div.add-program-button-body
               button(type="button" class="add-program" id="addProgram") Add More Program
@@ -49,6 +52,7 @@ html
                 label(for="conductor") Conductor:
                 select(name="conductor" id="conductor" required)
                   option(value="") Select a conductor
+                span(class="error-message")
                 input(type="hidden" name="conductorName" id="conductorName")
             div.form-final-buttons-body
               a(href="/").return-to-home Return to the homepage

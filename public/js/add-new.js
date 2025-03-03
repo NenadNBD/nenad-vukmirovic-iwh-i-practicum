@@ -135,4 +135,62 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("conductorName").value = conductorName;
     });
 
+    // Show warning messages for require fields
+    const form = document.getElementById("addNewConcert");
+
+    function showError(field, message) {
+        let errorSpan = field.parentNode.querySelector(".error-message");
+
+        if (!errorSpan) {
+            errorSpan = document.createElement("span");
+            errorSpan.classList.add("error-message");
+            field.parentNode.appendChild(errorSpan);
+        }
+
+        errorSpan.textContent = message;
+        errorSpan.style.display = "block";
+        field.classList.add("input-error");
+    }
+
+    // Remove warning message
+    function clearError(field) {
+        let errorSpan = field.parentNode.querySelector(".error-message");
+        if (errorSpan) {
+            errorSpan.style.display = "none";
+        }
+        field.classList.remove("input-error"); // Remove error styling
+    }
+
+    // Custom form validation before submission
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Stop default browser validation
+
+        let isValid = true;
+        const requiredFields = form.querySelectorAll("input[required], select[required]");
+
+        requiredFields.forEach(field => {
+            const label = form.querySelector(`label[for="${field.id}"]`);
+            const fieldName = label ? label.textContent.replace(":", "").trim() : "This field";
+            if (!field.value.trim()) {
+                showError(field, `${fieldName} is required`);
+                isValid = false;
+            } else {
+                clearError(field);
+            }
+        });
+
+        // If all good, submit the form manually
+        if (isValid) {
+            form.submit();
+        } else {
+            console.log("Form has errors, not submitting.");
+        }
+    });
+
+    // Remove warning messages on event
+    document.querySelectorAll("input[required], select[required]").forEach(field => {
+        field.addEventListener("input", () => clearError(field));
+        field.addEventListener("change", () => clearError(field));
+    });
+
 });
