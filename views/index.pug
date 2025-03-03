@@ -5,31 +5,36 @@ html
     meta(name="viewport", content="width=device-width, initial-scale=1")
     link(rel="stylesheet", href="/css/style.css")
   body
-    div.container
-      h1.page-title NBD Philharmonic Concerts
+    header.main-header
+      div.header-inner
+        div.header-logo
+          img(src="/images/nbd-philharmonic.svg" alt="NBD Philharmonic")
+    main.main-content
+      div.container
+        h1.page-title NBD Philharmonic Concerts
 
-      a(href="/update-cobj").add-btn Add New Concert
+        a(href="/update-cobj").add-btn Add New Concert
 
-      if concertsData && concertsData.length
-        div.concerts-body
-          each concert in concertsData
-            div.concert
-              div.concert-left
-                h3
-                  = concert.properties.concert_date
-                  span.date-time-divider
-                  span.time= concert.properties.concert_time
-              div.concert-right
-                h1= concert.properties.name
-                div.concert-program
-                  - var composers = concert.properties.composer.split("; ")
-                  - var compositions = concert.properties.composition.split("; ")
-                  each composer, index in composers
-                    p 
-                      | #{composer}: 
-                      span= " " + (compositions[index] || "Unknown Composition")
-                div.program-divider
-                  img(src="/images/Mint-Divider.svg" alt="Logo")
-                div.concert-conductor
-                  p Conductor:
-                    span Nenad Vukmirovic
+        if concertsData && concertsData.length
+          div.concerts-body
+            each concert in concertsData
+              div.concert
+                div.concert-left
+                  h3
+                    = concert.properties.concert_date
+                    span.date-time-divider
+                    span.time= concert.properties.concert_time
+                div.concert-right
+                  h1= concert.properties.name
+                  div.concert-program
+                    - var composers = concert.properties.composer.split("; ")
+                    - var compositions = concert.properties.composition.split("; ")
+                    each composer, index in composers
+                      p 
+                        | #{composer}: 
+                        span= " " + (compositions[index] || "Unknown Composition")
+                  div.program-divider
+                    img(src="/images/Mint-Divider.svg" alt="Logo")
+                  div.concert-conductor
+                    p Conductor:
+                      span Nenad Vukmirovic
