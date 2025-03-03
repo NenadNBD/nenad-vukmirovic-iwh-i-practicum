@@ -26,7 +26,7 @@ html
                     span.date-time-divider
                     span.time= concert.properties.concert_time
                 div.concert-right
-                  h1= concert.properties.name
+                  h2= concert.properties.name
                   div.concert-program
                     - var composers = concert.properties.composer.split("; ")
                     - var compositions = concert.properties.composition.split("; ")
@@ -38,4 +38,4 @@ html
                     img(src="/images/Mint-Divider.svg" alt="Logo")
                   div.concert-conductor
                     p Conductor:
-                      span Nenad Vukmirovic
+                      span= " " + concert.properties.conductor_name

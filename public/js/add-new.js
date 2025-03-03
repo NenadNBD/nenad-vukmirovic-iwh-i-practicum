@@ -1,11 +1,41 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    flatpickr("#dateTime", {
+    const dateInput = document.getElementById("dateTime");
+    const checkDateModalButton = document.getElementById("checkDatemodalButton");
+    const datePicker = flatpickr(dateInput, {
         enableTime: true,
         dateFormat: "Y-m-d H:i",
         time_24hr: false,
         altInput: true,
-        altFormat: "F j, Y h:iK"
+        altFormat: "F j, Y h:iK",
+        onChange: async function (selectedDates, dateStr) {
+            if (!dateStr) return;
+
+            // Convert selected date to Unix timestamp (Seconds)
+            const selectedDate = new Date(dateStr.split(" ")[0]); // Extract only the date part
+            selectedDate.setUTCHours(0, 0, 0, 0); // Set time to midnight UTC
+            const unixDateTimestamp = Math.floor(selectedDate.getTime() / 1000);
+
+            console.log("Checking for existing concerts on:", unixDateTimestamp);
+
+            // Send request to check for existing concerts
+            try {
+                const response = await fetch(`/check-concert-date?date=${unixDateTimestamp}`);
+                const data = await response.json();
+
+                if (data.exists) {
+                    document.getElementById('checkDatemodal').style.display = 'flex';
+                }
+            } catch (error) {
+                console.error("Error checking concert date:", error);
+            }
+        }
     });
+
+    checkDateModalButton.addEventListener("click", function () {
+        datePicker.clear(); // ✅ Clears Flatpickr selection
+        document.getElementById('checkDatemodal').style.display = 'none';
+    });
+
     const programContainer = document.getElementById("programContainer");
     const addProgramButton = document.getElementById("addProgram");
 
@@ -99,5 +129,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     } catch (error) {
         console.error("Error fetching conductors:", error);
     }
+    conductorSelect.addEventListener("change", function () {
+        let conductorSelectedOption = conductorSelect.options[conductorSelect.selectedIndex];
+        let conductorName = conductorSelectedOption.textContent;
+        document.getElementById("conductorName").value = conductorName;
+    });
 
 });

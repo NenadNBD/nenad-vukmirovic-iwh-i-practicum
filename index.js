@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 require("dotenv").config();
 const getConductors  = require('./utils/getConductors');
+const checkConcertDate  = require('./utils/checkConcertDate');
 const app = express();
 
 app.set('view engine', 'pug');
@@ -11,11 +12,13 @@ app.use(express.json());
 
 // * Please DO NOT INCLUDE the private app access token in your repo. Don't do this practicum in your normal account.
 const PRIVATE_APP_ACCESS = process.env.NENADS_PRACTICUM_PRIVATE_APP;
+app.use("/conductors", getConductors);
+app.use("/check-concert-date", checkConcertDate);
 
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
 
 app.get("/", async (req, res) => {
-    const url = "https://api.hubspot.com/crm/v3/objects/concerts?properties=concert_date,concert_time,name,composer,composition";
+    const url = "https://api.hubspot.com/crm/v3/objects/concerts?properties=concert_date,concert_time,name,composer,composition,conductor_name";
 
 
     const headers = {
@@ -24,7 +27,7 @@ app.get("/", async (req, res) => {
     };
 
     const params = {
-        properties: ["concert_date", "concert_time", "name", "composer", "composition"],
+        properties: ["concert_date", "concert_time", "name", "composer", "composition", "conductor_name"],
     };
 
     try {
@@ -81,29 +84,55 @@ app.post("/update-cobj", async (req, res) => {
         minute: "2-digit",
         hour12: true
     });
+    // Create UNIX Concert Date/Time Stamp
+    const concertDateForUnix = new Date(concertDatePart);
+    concertDateForUnix.setUTCHours(0, 0, 0, 0);
+    const concertUnixTimestamp = Math.floor(concertDateForUnix.getTime() / 1000);
+
     const composers = Array.isArray(req.body.composer) ? req.body.composer.join("; ") : req.body.composer;
     const compositions = Array.isArray(req.body.composition) ? req.body.composition.join("; ") : req.body.composition;
+
+    const conductorId = req.body.conductor;
+
     const data = {
         properties: {
             name: req.body.name,
             composer: composers,
             composition: compositions,
             concert_date: usConcertDate,
-            concert_time: usConcertTime
+            concert_date_stamp: concertUnixTimestamp,
+            concert_time: usConcertTime,
+            conductor_name: req.body.conductorName,
         },
     };
 
     try {
+        // STEP 1: Create the Custom Object "Concert" Record
         const response = await axios.post(url, data, { headers });
-        console.log("API Response:", JSON.stringify(response.data, null, 2));
+
+        // Get the new Concert Record ID
+        const concertId = response.data.id;
+
+        // STEP 2: Associate Conductor to Concert
+        if (conductorId) {
+            const associationUrl = `https://api.hubapi.com/crm/v4/objects/concerts/${concertId}/associations/contacts/${conductorId}`;
+
+            const associationData = [
+                {
+                    associationCategory: "USER_DEFINED",
+                    associationTypeId: 19,
+                },
+            ];
+
+            await axios.put(associationUrl, associationData, { headers });
+        }
+
         res.redirect("/");
+
     } catch (error) {
         console.error(error);
     }
 });
-
-// TODO: ROUTE 4 - Get Conductors from Contacts Object
-app.use("/conductors", getConductors);
 
 /** 
 * * This is sample code to give you a reference for how you should structure your calls. 

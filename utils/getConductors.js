@@ -29,8 +29,7 @@ getConductors.get("/", async (req, res) => {
 
     try {
         const response = await axios.post(url, body, { headers });
-        res.json(response.data.results); // Send JSON response
-        console.log("✅ Conductors API Response:", JSON.stringify(response.data, null, 2)); // LOG DATA
+        res.json(response.data.results);
     } catch (error) {
         console.error("Error fetching contacts:", error.response ? error.response.data : error);
         res.status(500).json({ error: "Failed to fetch conductors" });
