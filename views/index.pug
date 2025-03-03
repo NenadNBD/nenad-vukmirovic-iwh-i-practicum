@@ -17,6 +17,7 @@ html
           a(href="/update-cobj").add-btn Add New Concert
 
         if concertsData && concertsData.length
+          - concertsData = concertsData.sort((a, b) => a.properties.concert_date_stamp - b.properties.concert_date_stamp) // ✅ Sort by date ascending
           div.concerts-body
             each concert in concertsData
               div.concert

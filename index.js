@@ -18,7 +18,7 @@ app.use("/check-concert-date", checkConcertDate);
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
 
 app.get("/", async (req, res) => {
-    const url = "https://api.hubspot.com/crm/v3/objects/concerts?properties=concert_date,concert_time,name,composer,composition,conductor_name";
+    const url = "https://api.hubspot.com/crm/v3/objects/concerts?properties=concert_date_stamp,concert_date,concert_time,name,composer,composition,conductor_name";
 
 
     const headers = {
@@ -27,7 +27,7 @@ app.get("/", async (req, res) => {
     };
 
     const params = {
-        properties: ["concert_date", "concert_time", "name", "composer", "composition", "conductor_name"],
+        properties: ["concert_date_stamp", "concert_date", "concert_time", "name", "composer", "composition", "conductor_name"],
     };
 
     try {
