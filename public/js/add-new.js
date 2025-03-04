@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         time_24hr: false,
         altInput: true,
         altFormat: "F j, Y h:iK",
+        minDate: "today",
         onChange: async function (selectedDates, dateStr) {
             if (!dateStr) return;
 
