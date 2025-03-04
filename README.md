@@ -1,10 +1,15 @@
-# Welcome to the Integrating With HubSpot I: Foundations Practicum
+# Integrating With HubSpot I: Foundations Practicum
 
-This repository is for the Integrating With HubSpot I: Foundations course. This practicum is one of two requirements for receiving your Integrating With HubSpot I: Foundations certification. You must also take the exam and receive a passing grade (at least 75%).
+**HubSpot developer test account custom objects URL link here:** https://app-eu1.hubspot.com/contacts/145860898/objects/2-139880892/views/all/list
 
-To read the full directions, please go to the [practicum instructions](https://app.hubspot.com/academy/l/tracks/1092124/1093824/5493?language=en).
+# Deployment & GitHub Integration
+This project is also **deployed on Heroku** with **GitHub integration**, meaning:
+- The **GitHub repository serves as the primary source** for the application.
+- **Heroku is directly connected to the GitHub repository**, so every push to the repository **automatically deploys** the latest version of the application.
+- The application can be accessed **remotely via Heroku** or **run locally** for development.
 
-**Put your HubSpot developer test account custom objects URL link here:** https://app-eu1.hubspot.com/contacts/145860898/objects/2-139880892/views/all/list
+# Live Deployment
+**Heroku APP link here:** https://philharmonic.nenad-code.dev
 
 ___
 ## Tips:
