@@ -103,6 +103,7 @@ app.post("/update-cobj", async (req, res) => {
             concert_date_stamp: concertUnixTimestamp,
             concert_time: usConcertTime,
             conductor_name: req.body.conductorName,
+            hubspot_owner_id: '44516880',
         },
     };
 
